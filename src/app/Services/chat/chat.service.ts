@@ -41,7 +41,7 @@ export class ChatService {
     opponentName: string,
     userAvatar: string,
     opponentAvatar: string
-  ) {
+  ): void {
     this.db
       .doc(`ChatMessages/${this.getConversationID(userId, opponentId)}`)
       .set(
@@ -55,7 +55,7 @@ export class ChatService {
       );
   }
 
-  public sendMessage(msg: string, opponentId: string) {
+  public sendMessage(msg: string, opponentId: string): void {
     // const timestamp = this.getTimeStamp();
     // const sender = this.user.id;
     const msgDoc: ChatMessage = {
@@ -95,7 +95,7 @@ export class ChatService {
       .valueChanges();
   }
 
-  private getConversationID(userId: string, opponentId: string) {
+  private getConversationID(userId: string, opponentId: string): string {
     let p1 = opponentId;
     let p2 = userId;
     if (userId > opponentId) {
