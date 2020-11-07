@@ -1,0 +1,13 @@
+<app-top-nav [title]="'Your chat list'"></app-top-nav>
+<div class="container mt-3">
+  <mat-list *ngIf="chatList.length > 0; else noChat" role="list">
+    <div *ngFor="let chat of chatList; let i = index" class="mb-2">
+      <app-chat-list-item [chat]="chat" [divider]="i < chatList.length - 1"></app-chat-list-item>
+    </div>
+  </mat-list>
+  <ng-template #noChat>
+    <p class="px-5 py-5" style="text-align: center;">
+      {{ "CHAT.NOMESSAGE" | translate }}
+    </p>
+  </ng-template>
+</div>
