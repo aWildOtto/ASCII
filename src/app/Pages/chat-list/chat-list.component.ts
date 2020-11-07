@@ -12,14 +12,12 @@ import { Subscription } from 'rxjs';
 export class ChatListComponent implements OnInit, OnDestroy {
   public chatList = [];
   // private chatOpponentObservables$: Subscription[] = [];
-  private notificationObservables$: Subscription;
   private chatListObservables$: Subscription;
   private userObservable$: Subscription;
 
   constructor(
     private cs: ChatService,
-    private us: UserService,
-    private ns: NotificationService,
+    private us: UserService
   ) {
     this.userObservable$ = this.us.authState.subscribe(async (auth) => {
       if (!auth) {
@@ -28,41 +26,25 @@ export class ChatListComponent implements OnInit, OnDestroy {
         }
         return;
       }
-      this.notificationObservables$ = this.ns.notifications.subscribe(
-        (notifications) => {
-          this.chatListObservables$ = this.cs
-            .getChatList(auth.uid)
-            .subscribe((chatsRef) => {
-              const chats = [];
-              chatsRef.forEach(async (chatRef) => {
-                const chat = chatRef;
-                let opponentId = chat.peers[0];
-                let opponentIndex = 0;
-                if (chat.peers[0] === auth.uid) {
-                  opponentId = chat.peers[1];
-                  opponentIndex = 1;
-                }
-                chat.opponentName = chat[opponentId];
-                if (chat.avatarUrls) {
-                  chat.showAvatar =
-                    chat.avatarUrls[opponentIndex] ||
-                    '../../../assets/default-avatar.png';
-                } else {
-                  chat.showAvatar = '../../../assets/default-avatar.png';
-                }
-                chat.opponentId = opponentId;
-                if (notifications && notifications.chat && notifications.chat[opponentId]) {
-                  chat.unread = true;
-                }
-                if (chat.mostRecent.senderName === chat[auth.uid]) {
-                  chat.mostRecent.senderName = 'You';
-                }
-                chats.push(chat);
-              });
-              this.chatList = chats;
-            });
-        }
-      );
+      this.chatListObservables$ = this.cs
+        .getChatList(auth.uid)
+        .subscribe((chatsRef) => {
+          const chats = [];
+          chatsRef.forEach(async (chatRef) => {
+            const chat = chatRef;
+            let opponentId = chat.peers[0];
+            if (chat.peers[0] === auth.uid) {
+              opponentId = chat.peers[1];
+            }
+            chat.opponentName = chat[opponentId];
+            chat.opponentId = opponentId;
+            if (chat.mostRecent.senderName === chat[auth.uid]) {
+              chat.mostRecent.senderName = 'You';
+            }
+            chats.push(chat);
+          });
+          this.chatList = chats;
+        });
     });
   }
 
@@ -70,10 +52,6 @@ export class ChatListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.chatOpponentObservables$.forEach((obs) => {
-    //   obs.unsubscribe();
-    // });
-    this.notificationObservables$?.unsubscribe();
     this.chatListObservables$?.unsubscribe();
     this.userObservable$?.unsubscribe();
   }

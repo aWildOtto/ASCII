@@ -1,0 +1,23 @@
+<div class="w-100 form-body">
+  <form (ngSubmit)="sendMessage()" [formGroup]="chatForm">
+    <div class="input-group">
+      <input
+        aria-label="message"
+        class="form-control chat-input shadow-none"
+        formControlName="message"
+        placeholder="{{ 'CHAT.FORMPLACEHOLDERTEXT' | translate }}"
+        type="text"
+      />
+      <div class="input-group-append">
+        <button
+          [disabled]="!this.chatForm.valid"
+          class="input-group-text chatButton"
+          mat-flat-button
+          type="submit"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
