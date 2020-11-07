@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DicService} from '../../services/dic/dic.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ds: DicService) { }
 
   ngOnInit(): void {
+    console.log(this.ds.getPairs());
   }
-
 }

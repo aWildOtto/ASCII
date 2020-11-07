@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { ChatService } from 'src/app/Services/chat.service';
+import {DicService} from './services/dic/dic.service';
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -29,7 +30,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     AngularFireStorageModule // storage
   ],
   providers: [
-    ChatService
+    ChatService,
+    DicService
   ],
   bootstrap: [AppComponent]
 })
