@@ -23,12 +23,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AvatarModule} from 'ngx-avatar';
 import {MatListModule} from '@angular/material/list';
 import {HttpClientModule} from '@angular/common/http';
+import {OnlineChatListItemComponent} from './Components/online-chat-list-item/online-chat-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatListComponent,
     ChatListItemComponent,
+    OnlineChatListItemComponent,
     TopNavComponent,
     NavBarComponent,
     LoginPageComponent,

@@ -1,0 +1,18 @@
+<a [routerLink]="['/chat-with/', onlineUser.selfId]" class="hl-nounderline">
+  <mat-list-item role="listitem">
+    <div class="media mt-3 overflow-hidden w-100">
+      <ngx-avatar [src]="onlineUser.url" class="mr-3" mat-list-icon></ngx-avatar>
+      <div class="ml-4 w-100 message-content">
+        <h3 class="mb-1">
+          {{ onlineUser.name || "Unkown" }}
+        </h3>
+      </div>
+    </div>
+    <div class="ml-auto d-flex flex-row align-items-center">
+      <span class="pt-2 pb-2 pr-2" style="text-align: right;">
+        {{ onlineUser.since | fromNowDate }}
+      </span>
+    </div>
+  </mat-list-item>
+  <mat-divider class="mt-2"></mat-divider>
+</a>
