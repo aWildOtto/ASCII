@@ -22,6 +22,7 @@ import {DatePipe} from './date.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AvatarModule} from 'ngx-avatar';
 import {MatListModule} from '@angular/material/list';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MatListModule} from '@angular/material/list';
     DatePipe,
   ],
   imports: [
+    HttpClientModule,
     MatListModule,
     AvatarModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
