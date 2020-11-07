@@ -1,0 +1,31 @@
+<div class=" d-flex flex-column">
+    <app-top-nav [back]="'/'" [title]=" chatterInfo[opponentId]?.username || 'Shady Individual' ">
+    </app-top-nav>
+  
+    <div class="d-flex flex-row flex-grow-1 chat-wrapper">
+        <div #scrollMe class="chat-content scrollable d-flex flex-column">
+          <div *ngIf="historyMessages.length > 0; else noMessage">
+            <app-chat-message *ngFor="let msg of historyMessages"
+              [avatar]="chatterInfo[msg.sender]?.avatar ||'../../../../assets/default-avatar.png'"
+              [date]="msg.timeSent.toDate()" [files]="msg.files" [link]="msg.link" [message]="msg.message"
+              [reply]="msg.receiver === opponentId" [sender]="chatterInfo[msg.sender]?.username || 'Shady individual'"
+              [type]="msg.type" [updateType]="msg.updateType" [userId]="msg.sender">
+            </app-chat-message>
+          </div>
+  
+          <ng-template #noMessage>
+            <div class="flex-grow-1">
+              <p [innerHTML]="'CHAT.NOHISTORY' | translate:{'name': chatterInfo[opponentId]?.username}" class="px-5 py-5"
+                style="text-align: center;">
+  
+              </p>
+            </div>
+          </ng-template>
+  
+        </div>
+  
+        <app-chat-form (send)="sendMessage($event)" class='chat-form'></app-chat-form>
+  
+    </div>
+  
+  </div>

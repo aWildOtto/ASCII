@@ -1,0 +1,27 @@
+<div *ngIf="type==='text'" [ngClass]="reply ? 'right' : 'left'" class="w-100">
+  <div class="media" style="max-width: 75%;">
+    <ngx-avatar *ngIf="!this.reply" class="hand-cursor"
+                [routerLink]="['/user-detail', this.userId]"
+                src="{{ avatar }}"></ngx-avatar>
+    <div class="media-body w-75">
+      <div class="chat-msg-timestamp">
+        <h6 class="sender-name" class="hand-cursor"
+            [routerLink]="['/user-detail', this.userId]">{{ sender }}</h6>
+        <h6 class="mr-3 date">{{ date | fromNowDate }}</h6>
+      </div>
+      <div class="chat-msg-content mb-3">
+        <h5 style="word-wrap: break-word;">{{ message }}</h5>
+      </div>
+    </div>
+    <ngx-avatar *ngIf="this.reply" class="hand-cursor"
+                [routerLink]="['/user-detail', this.userId]"
+                src="{{ avatar }}"></ngx-avatar>
+  </div>
+</div>
+
+<div *ngIf="type==='update'">
+  <div class="p-5 w-100">
+    {{'CHAT.' + updateType | translate}}
+    <button [routerLink]="[link]" mat-button>Check Order</button>
+  </div>
+</div>

@@ -39,49 +39,4 @@ export class NotificationService {
     // });
   }
 
-  getNotification(userId: string, groupId: string, category: string): any {
-    return this.db.database.ref(`notifications/${userId}/${category}/${groupId}`).once('value');
-  }
-
-  getNotifications(userId: string): any {
-    this.notificationRef = this.db.database.ref(`notifications/${userId}`);
-    this.notificationRef.on('value', (allNotifications) => {
-      const notis = allNotifications.val();
-      this.notifications.next(notis);
-      this.calNotificationCount(notis);
-    });
-  }
-
-  calNotificationCount(notifications): void {
-    // notifications are sorted by categories and specific userId/orderId
-    let total = 0;
-    let chat = 0;
-    let order = 0;
-    for (const category in notifications) {
-      if (category) {
-        for (const id in notifications[category]) {
-          if (id) {
-            for (const noti in notifications[category][id]) {
-              if (noti) {
-                if (category === 'chat') {
-                  chat++;
-                }
-                if (category === 'order') {
-                  order++;
-                }
-                total++;
-              }
-            }
-          }
-        }
-      }
-    }
-    this.notificationCount.next({
-      chat, total, order
-    });
-  }
-
-  clearNotifications(userId: string, type: string, id: string): any {
-    return this.db.database.ref(`notifications/${userId}/${type}/${id}`).remove();
-  }
 }
