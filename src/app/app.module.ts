@@ -13,6 +13,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {environment} from '../environments/environment';
+import { OnlineListComponent } from './online-list/online-list.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {environment} from '../environments/environment';
     TopNavComponent,
     NavBarComponent,
     LoginPageComponent,
+    OnlineListComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
