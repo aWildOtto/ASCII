@@ -1,4 +1,4 @@
-<app-top-nav [title]="'CHAT.CHATLISTTITLE'|translate"></app-top-nav>
+<app-top-nav [title]="'Your chat list'"></app-top-nav>
 <div class="container mt-3">
   <mat-list *ngIf="chatList.length > 0; else noChat" role="list">
     <div *ngFor="let chat of chatList; let i = index" class="mb-2">
