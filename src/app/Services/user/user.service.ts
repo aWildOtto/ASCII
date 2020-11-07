@@ -7,7 +7,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
 
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 
@@ -35,7 +35,9 @@ export class UserService {
   private userStatusRdbRef: firebase.default.database.Reference;
 
   private $userObservable: Subscription;
-
+  public get authState(): Observable<FirebaseUser> {
+    return this.afAuth.authState;
+  }
   constructor(
     private db: AngularFirestore,
     private rdb: AngularFireDatabase,
