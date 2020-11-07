@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ASCII'`, () => {
+  it(`should have as title 'ascii'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ASCII');
+    expect(app.title).toEqual('ascii');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ASCII app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('ascii app is running!');
   });
 });
