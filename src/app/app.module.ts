@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     ChatListComponent,
     TopNavComponent,
     NavBarComponent,
-    LoginPageComponent
+    LoginPageComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
     AppRoutingModule,
     AngularFirestoreModule, // firestore
