@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChatListComponent } from 'src/app/Pages/chat-list/chat-list.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { AsgardGuard } from './Guards/asgard/asgard.guard';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { InvalidPageComponent } from './Pages/invalid-page/invalid-page.component';
-import { OnlineListComponent } from './online-list/online-list.component';
+import { OnlineListComponent } from './Components/online-list/online-list.component';
 
 const routes: Routes = [
   {
