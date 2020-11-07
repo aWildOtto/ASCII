@@ -1,18 +1,19 @@
-<a [routerLink]="['/chat-with/', onlineUser.selfId]" class="hl-nounderline">
+<div class="chat-item mt-1" [routerLink]="['/chat-with/', onlineUser.selfId]">
   <mat-list-item role="listitem">
-    <div class="media mt-3 overflow-hidden w-100">
+    <div class="media overflow-hidden w-100">
       <ngx-avatar [src]="onlineUser.url" class="mr-3" mat-list-icon></ngx-avatar>
-      <div class="ml-4 w-100 message-content">
-        <h3 class="mb-1">
+      <div class="w-50">
+        <h6 class="text-center">
           {{ onlineUser.name || "Unkown" }}
-        </h3>
+        </h6>
       </div>
-    </div>
-    <div class="ml-auto d-flex flex-row align-items-center">
-      <span class="pt-2 pb-2 pr-2" style="text-align: right;">
+      <div class="ml-auto d-flex flex-row align-items-center" >
+      <span class="pr-3" >
         {{ onlineUser.since | fromNowDate }}
       </span>
+      </div>
     </div>
+
   </mat-list-item>
-  <mat-divider class="mt-2"></mat-divider>
-</a>
+</div>
+
