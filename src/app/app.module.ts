@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { ChatService } from 'src/app/Services/chat.service';
+import { ChatService } from 'src/app/Services/chat/chat.service';
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
