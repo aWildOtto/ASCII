@@ -12,9 +12,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { environment } from '../environments/environment';
+
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { InvalidPageComponent } from './Pages/invalid-page/invalid-page.component';
+import { environment } from '../environments/environment';
+import { OnlineListComponent } from './online-list/online-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { InvalidPageComponent } from './Pages/invalid-page/invalid-page.componen
     LoginPageComponent,
     HomePageComponent,
     InvalidPageComponent,
+    OnlineListComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
