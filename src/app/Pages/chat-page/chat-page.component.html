@@ -1,8 +1,12 @@
-<app-top-nav [back]="'/'" [title]="  'Shady Individual' ">
+<app-top-nav [back]="'/'" [title]=" this.opponent?.username ||  'Shady Individual' ">
 </app-top-nav>
 
 <div class="d-flex flex-row">
+    <div class="w-50">
 
-    <app-chat></app-chat>
-    
+        <app-chat *ngIf="opponent" [opponent]="this.opponent"></app-chat>
+    </div>
+    <div class="w-50">
+        put ascii guess section here
+    </div>
 </div>

@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {AngularFireDatabase} from '@angular/fire/database';
-import {ChatMessage} from '../../models/chat-message';
-import {Observable} from 'rxjs';
-import {UserService} from '../user/user.service';
-import {NotificationService} from '../notification/notification.service';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { ChatMessage } from '../../models/chat-message';
+import { Observable } from 'rxjs';
+import { User, UserService } from '../user/user.service';
+import { NotificationService } from '../notification/notification.service';
 import firebase from 'firebase';
-import {OnlineChatUser} from '../../Components/online-chat-list-item/online-chat-list-item.component';
+import { OnlineChatUser } from '../../Components/online-chat-list-item/online-chat-list-item.component';
 
 @Injectable({
   providedIn: 'root',
@@ -39,23 +39,19 @@ export class ChatService {
    * createChatRoom
    */
   public createChatRoom(
-    userId: string,
-    opponentId: string,
-    username: string,
-    opponentName: string,
-    userAvatar: string,
-    opponentAvatar: string
+    user: User,
+    opponent: User
   ): void {
     this.db
-      .doc(`ChatMessages/${this.getConversationID(userId, opponentId)}`)
+      .doc(`ChatMessages/${this.getConversationID(user.uid, opponent.uid)}`)
       .set(
         {
-          peers: [userId, opponentId],
-          avatarUrls: [userAvatar, opponentAvatar],
-          [userId]: username,
-          [opponentId]: opponentName,
+          peers: [user.uid, opponent.uid],
+          avatarUrls: [user.avatarUrl, opponent.avatarUrl],
+          [user.uid]: user.username,
+          [opponent.uid]: opponent.username,
         },
-        {merge: true}
+        { merge: true }
       );
   }
 

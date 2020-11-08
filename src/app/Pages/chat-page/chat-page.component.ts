@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/Services/user/user.service';
+import { User, UserService } from 'src/app/Services/user/user.service';
 
 @Component({
   selector: 'app-chat-page',
@@ -9,6 +9,7 @@ import { UserService } from 'src/app/Services/user/user.service';
 })
 export class ChatPageComponent implements OnInit {
 
+  opponent: User;
   constructor(
     private us: UserService,
     private route: ActivatedRoute,
@@ -17,8 +18,8 @@ export class ChatPageComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       this.us.getUser(params.uid, (ref) => {
-        const userData = ref[0];
-        console.log(userData);
+        this.opponent = ref.val()[params.uid];
+        console.log(this.opponent);
       });
     });
 
