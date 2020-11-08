@@ -1,9 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-$fancy-font: "JF Flat Regular";
-$theme-color: #52b9de;
-$second-color: #32a852;
-$common-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+@import './variables.scss';
 div{
   font-family: $fancy-font;
 }
@@ -26,4 +21,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 a:hover {
   text-decoration: none;
   color: $second-color !important;
+}
+
+a {
+
+  color: $theme-color !important;
+}
+
+
+.dot {
+  height: 1rem;
+  width: 1rem;
+  background-color: $theme-color;
+  border-radius: 50%;
+  display: inline-block;
 }

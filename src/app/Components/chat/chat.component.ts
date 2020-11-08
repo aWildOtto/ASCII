@@ -14,7 +14,6 @@ import { NotificationService } from 'src/app/Services/notification/notification.
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() opponent: User;
   public currentUser: User;
-  public hasChat = true;
 
   public username: string = null;
   public messageSubscrible$: Subscription;
@@ -75,10 +74,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
         console.log(messages);
-        if (messages.length === 0) {
-          this.hasChat = false;
-        }
-
+        this.ns.clearNotifications(userId, 'chat', opponentId);
         this.historyMessages = messages;
       });
   }
