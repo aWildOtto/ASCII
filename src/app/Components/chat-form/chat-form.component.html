@@ -10,7 +10,7 @@
       />
       <div class="input-group-append">
         <button
-          [disabled]="!this.chatForm.valid"
+          [disabled]="!this.chatForm.valid || this.chances<=0"
           class="input-group-text chatButton"
           mat-flat-button
           type="submit"

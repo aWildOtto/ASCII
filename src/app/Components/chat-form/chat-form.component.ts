@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatFormComponent implements OnInit {
   public message: string;
+  @Input() chances = 0;
   @Input() opponentId: string;
   @Output() send = new EventEmitter<object>();
 
@@ -26,7 +27,7 @@ export class ChatFormComponent implements OnInit {
     });
   }
 
-  public sendMessage() {
+  public sendMessage(): void {
     // this.chat.sendMessage(this.message, this.opponentId);
     this.send.emit({
       message: this.chatForm.value.message,
