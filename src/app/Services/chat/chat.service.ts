@@ -58,8 +58,8 @@ export class ChatService {
   public sendMessage(msg: string, opponentId: string): void {
     // const timestamp = this.getTimeStamp();
     // const sender = this.user.id;
-    console.log(msg);
-    console.log(opponentId);
+    // console.log(msg);
+    // console.log(opponentId);
     const msgDoc: ChatMessage = {
       timeSent: new Date(),
       sender: this.userId,
