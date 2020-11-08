@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AsciiGameComponent} from './ascii-game/ascii-game.component';
+import {AsciiGameComponent} from './Components/ascii-game/ascii-game.component';
 import { ChatListComponent } from 'src/app/Pages/chat-list/chat-list.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { AsgardGuard } from './Guards/asgard/asgard.guard';

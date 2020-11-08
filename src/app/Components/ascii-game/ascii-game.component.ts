@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {DicService} from '../Services/dic/dic.service';
+import {DicService} from '../../Services/dic/dic.service';
 import {interval, Subscription} from 'rxjs';
 
 @Component({
