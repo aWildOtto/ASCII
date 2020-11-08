@@ -12,6 +12,12 @@ This is a messenger-like chat app but it requires user to solve ASCII puzzles in
     - A list of previous chat friends
     - ASCII puzzles
 
+## Built with
+- Angular
+- Bootstrap
+- Angular Material
+- Firebase
+
 ## How to use
 - We have a production version hosted at https://ascii.ziboostudios.com/
 - Or follow the instruction below to run a dev server
