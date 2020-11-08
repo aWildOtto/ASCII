@@ -6,11 +6,11 @@ export class OnlineChatUser {
   name: string;
   selfId: string;
 
-  constructor(since: Date, url: string, name: string) {
+  constructor(since: Date, url: string, name: string, uid: string) {
     this.since = since;
     this.url = url;
     this.name = name;
-    this.selfId = '123';
+    this.selfId = uid;
   }
 
 }
