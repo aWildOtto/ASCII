@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
+import {Injectable} from '@angular/core';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
-import { User as FirebaseUser } from '@firebase/auth-types';
+import {User as FirebaseUser} from '@firebase/auth-types';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
 
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { Router } from '@angular/router';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {Router} from '@angular/router';
 
 // tslint:disable:typedef
 
@@ -128,5 +128,19 @@ export class UserService {
 
   private async signInSuccess(uid: string, redirectTo: string) {
     await this.router.navigateByUrl(redirectTo || '/');
+  }
+
+  logout() {
+    this.userInfo$.next(null);
+    this.userStatusRdbRef.set({
+      username: this.authMetaData.displayName,
+      avatarUrl: this.authMetaData.photoURL,
+      uid: this.authMetaData.uid,
+      ...this.isOfflineForDatabase
+    });
+    this.afAuth.signOut().then(() => {
+      this.$userObservable?.unsubscribe();
+      this.router.navigateByUrl('/sign-in');
+    });
   }
 }
