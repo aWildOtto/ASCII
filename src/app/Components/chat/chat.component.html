@@ -9,17 +9,17 @@
         </app-chat-message>
       </div>
 
-      <ng-template #noMessage>
-        <div class="flex-grow-1">
-          <p  class="px-5 py-5"
-            style="text-align: center;">
-            No message
-          </p>
-        </div>
-      </ng-template>
+    <ng-template #noMessage>
+      <div class="flex-grow-1">
+        <p class="px-5 py-5"
+           style="text-align: center;">
+          No message
+        </p>
+      </div>
+    </ng-template>
 
-    </div>
+  </div>
 
-    <app-chat-form (send)="sendMessage($event)" class='chat-form'></app-chat-form>
 
 </div>
+<app-chat-form (send)="sendMessage($event)" class='chat-form'></app-chat-form>

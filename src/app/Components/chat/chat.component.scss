@@ -1,15 +1,5 @@
 
 
-.chat-wrapper {
-  height: calc(100vh - 80px - 62px);
-}
-
-@media (max-width: 767.98px) {
-  .chat-wrapper {
-    height: calc(100vh - 120px - 60px) !important;
-  }
-}
-
 .chat {
 
   background-color: #ffffff;
