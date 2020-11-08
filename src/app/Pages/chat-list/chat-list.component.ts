@@ -15,6 +15,7 @@ export class ChatListComponent implements OnInit, OnDestroy {
   private chatListObservables$: Subscription;
   private userObservable$: Subscription;
 
+  private userId: string;
   constructor(
     private cs: ChatService,
     private us: UserService
@@ -26,6 +27,7 @@ export class ChatListComponent implements OnInit, OnDestroy {
         }
         return;
       }
+      this.userId = auth.uid;
       this.chatListObservables$ = this.cs
         .getChatList(auth.uid)
         .subscribe((chatsRef) => {
@@ -62,6 +64,10 @@ export class ChatListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+  }
+
+  deleteChat(opponentId): void {
+    this.cs.deleteChatRoom(this.userId, opponentId);
   }
 
   ngOnDestroy(): void {

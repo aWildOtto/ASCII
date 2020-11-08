@@ -113,4 +113,8 @@ export class ChatService {
     this.rdbRef.orderByChild('state').equalTo('online').on('value', cb);
   }
 
+  deleteChatRoom(user, opponent): void {
+    this.db.doc('ChatMessages/' + this.getConversationID(user, opponent)).delete();
+  }
 }
+
