@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { ChatMessage } from '../../models/chat-message';
-import { Observable } from 'rxjs';
-import { UserService } from '../user/user.service';
-import { NotificationService } from '../notification/notification.service';
+import {Injectable} from '@angular/core';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {ChatMessage} from '../../models/chat-message';
+import {Observable} from 'rxjs';
+import {UserService} from '../user/user.service';
+import {NotificationService} from '../notification/notification.service';
+import firebase from 'firebase';
+import {OnlineChatUser} from '../../Components/online-chat-list-item/online-chat-list-item.component';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,7 @@ import { NotificationService } from '../notification/notification.service';
 export class ChatService {
   public historyMessages: AngularFirestoreCollection<ChatMessage>;
   private chatMessages: AngularFirestoreCollection<ChatMessage>;
+  private rdbRef: firebase.database.Reference;
   private userId: string;
   private conversationID: string;
 
@@ -23,6 +26,7 @@ export class ChatService {
     private us: UserService,
     private ns: NotificationService
   ) {
+    this.rdbRef = this.rdb.database.ref('status');
     this.chatMessages = this.db.collection('ChatMessages');
     this.us.authState.subscribe((auth) => {
       if (auth) {
@@ -41,7 +45,7 @@ export class ChatService {
     opponentName: string,
     userAvatar: string,
     opponentAvatar: string
-  ) {
+  ): void {
     this.db
       .doc(`ChatMessages/${this.getConversationID(userId, opponentId)}`)
       .set(
@@ -51,11 +55,11 @@ export class ChatService {
           [userId]: username,
           [opponentId]: opponentName,
         },
-        { merge: true }
+        {merge: true}
       );
   }
 
-  public sendMessage(msg: string, opponentId: string) {
+  public sendMessage(msg: string, opponentId: string): void {
     // const timestamp = this.getTimeStamp();
     // const sender = this.user.id;
     const msgDoc: ChatMessage = {
@@ -72,6 +76,7 @@ export class ChatService {
       .collection('history')
       .add(msgDoc);
   }
+
   public loadingMessages(
     userId: string,
     opponentId: string
@@ -95,7 +100,7 @@ export class ChatService {
       .valueChanges();
   }
 
-  private getConversationID(userId: string, opponentId: string) {
+  private getConversationID(userId: string, opponentId: string): string {
     let p1 = opponentId;
     let p2 = userId;
     if (userId > opponentId) {
@@ -104,4 +109,10 @@ export class ChatService {
     }
     return p1 + '-' + p2;
   }
+
+  getAllOnlineUsers(cb): void {
+
+    this.rdbRef.orderByChild('state').equalTo('online').on('value', cb);
+  }
+
 }

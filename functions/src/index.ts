@@ -11,6 +11,7 @@ import * as admin from 'firebase-admin';
 import FieldValue = admin.firestore.FieldValue;
 
 import UserRecord = admin.auth.UserRecord;
+admin.initializeApp(); // do not change the order or it will not compile
 
 const db = admin.firestore();
 

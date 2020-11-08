@@ -13,8 +13,11 @@ import { Router } from '@angular/router';
 
 // tslint:disable:typedef
 
+
 export interface User {
-  userName: string;
+  uid: string;
+  username: string;
+  avatarUrl: string;
 }
 
 @Injectable({
@@ -22,7 +25,6 @@ export interface User {
 })
 export class UserService {
   public userInfo$ = new BehaviorSubject<User>(null);
-  public UsersCollection: AngularFirestoreCollection<User>;
   public authMetaData: FirebaseUser = null;
   private isOfflineForDatabase = {
     state: 'offline',
@@ -35,15 +37,47 @@ export class UserService {
   private userStatusRdbRef: firebase.default.database.Reference;
 
   private $userObservable: Subscription;
+
   public get authState(): Observable<FirebaseUser> {
     return this.afAuth.authState;
   }
+
+
   constructor(
     private db: AngularFirestore,
     private rdb: AngularFireDatabase,
     private router: Router,
     private afAuth: AngularFireAuth
   ) {
+
+    this.afAuth.authState.subscribe((signInUser: FirebaseUser) => {
+      if (signInUser) {
+        this.authMetaData = signInUser;
+        /*
+         * realtime db online/offline status switcher
+         */
+        this.userStatusRdbRef = firebase
+          .default.database()
+          .ref(`status/${signInUser.uid}`);
+        this.userStatusRdbRef.set({
+          username: signInUser.displayName,
+          avatarUrl: signInUser.photoURL,
+          uid: signInUser.uid,
+          ...this.isOnlineForDatabase
+        });
+        this.userStatusRdbRef.onDisconnect().set({
+          username: signInUser.displayName,
+          avatarUrl: signInUser.photoURL,
+          uid: signInUser.uid,
+          ...this.isOfflineForDatabase
+        });
+
+      } else {
+        this.authMetaData = null;
+        this.userInfo$.next(null);
+      }
+    });
+
   }
 
   /*
@@ -94,12 +128,5 @@ export class UserService {
 
   private async signInSuccess(uid: string, redirectTo: string) {
     await this.router.navigateByUrl(redirectTo || '/');
-    setTimeout(() => {
-      this.$userObservable = this.UsersCollection.doc(uid)
-        .valueChanges()
-        .subscribe(async (userInfo: User) => {
-          this.userInfo$.next(userInfo);
-        });
-    }, 1500);
   }
 }
