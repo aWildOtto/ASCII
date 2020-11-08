@@ -13,7 +13,7 @@ This is a messenger-like chat app but it requires user to solve ASCII puzzles in
     - ASCII puzzles
 
 ## How to use
-- We have a production version hosted
+- We have a production version hosted at https://ascii.ziboostudios.com/
 - Or follow the instruction below to run a dev server
 
 ## Development server
