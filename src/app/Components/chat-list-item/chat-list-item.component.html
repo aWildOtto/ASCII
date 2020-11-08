@@ -1,9 +1,9 @@
 <a [routerLink]="['/chat-with/', chat.opponentId]" class="hl-nounderline">
   <mat-list-item role="listitem">
-    <div [ngClass]="chat.unread ? 'font-weight-bold' : ''" class="media mt-3 overflow-hidden w-100">
+    <div  class="media mt-3 overflow-hidden w-100">
       <ngx-avatar [src]="chat.showAvatar" class="mr-3" mat-list-icon></ngx-avatar>
-      <div [ngClass]="chat.unread ? 'font-weight-bold' : ''" class="ml-4 w-100 message-content">
-        <h3 [ngClass]="chat.unread ? 'font-weight-bold' : ''" class="mb-1">
+      <div class="ml-4 w-100 message-content">
+        <h3 class="mb-1">
           {{ chat.opponentName || "Unkown" }}
         </h3>
         <p class=" mr-0">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="ml-auto d-flex flex-row align-items-center">
-      <span [ngClass]="chat.unread ? 'font-weight-bold' : ''" class="pt-2 pb-2 pr-2" style="text-align: right;">
+      <span class="pt-2 pb-2 pr-2" style="text-align: right;">
         {{ chat.mostRecent.timeSent.toDate() | fromNowDate }}
       </span>
       <span *ngIf="chat.unread" class="pl-3 dot"></span>
