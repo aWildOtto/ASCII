@@ -14,7 +14,7 @@ export class OnlineListComponent implements OnInit {
     this.cs.getAllOnlineUsers((res) => {
       this.onlineUsers = [];
       res.forEach((x) => {
-        this.onlineUsers.push(new OnlineChatUser(x.val().last_changed, x.val().avatarUrl, x.val().username));
+        this.onlineUsers.push(new OnlineChatUser(x.val().last_changed, x.val().avatarUrl, x.val().username, x.val().uid));
       });
     });
   }
