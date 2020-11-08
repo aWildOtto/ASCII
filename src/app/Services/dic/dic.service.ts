@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+// @ts-ignore
 import data from '../../../assets/words.json';
 
 @Injectable({
