@@ -1,23 +1,36 @@
 <div class="w-100 form-body">
   <form (ngSubmit)="sendMessage()" [formGroup]="chatForm">
-    <div class="input-group">
-      <input
-        aria-label="message"
-        class="form-control chat-input shadow-none"
-        formControlName="message"
-        placeholder="Enter message here"
-        type="text"
-      />
+    <div class="input-group mb-3">
+      <input type="text" class="form-control"
+             placeholder="Enter message here"
+             formControlName="message"
+             aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <button
-          [disabled]="!this.chatForm.valid"
-          class="input-group-text chatButton"
-          mat-flat-button
-          type="submit"
-        >
-          <mat-icon>send</mat-icon>
+        <button class="btn btn-outline-secondary"
+                mat-flat-button
+                type="submit"
+                [disabled]="!this.chatForm.valid">
+          Send
         </button>
       </div>
     </div>
+    <!--    <div class="input-group">-->
+    <!--      <input-->
+    <!--        aria-label="message"-->
+    <!--        class="form-control chat-input shadow-none"-->
+    <!--        formControlName="message"-->
+    <!--        placeholder="Enter message here"-->
+    <!--        type="text"-->
+    <!--      />-->
+    <!--      <div class="input-group-append">-->
+    <!--        <button-->
+    <!--          [disabled]="!this.chatForm.valid"-->
+    <!--          class="input-group-text chatButton"-->
+    <!--          mat-flat-button-->
+    <!--          type="submit"-->
+    <!--        >-->
+    <!--        </button>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </form>
 </div>
