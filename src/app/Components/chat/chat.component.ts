@@ -74,7 +74,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.messageSubscrible$ = this.cs
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
-        console.log(messages);
         if (messages.length === 0) {
           this.hasChat = false;
         }

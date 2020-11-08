@@ -26,7 +26,7 @@ export class LoginPageComponent implements OnInit {
   public googleLogIn(): void {
 
     this.us.thirdPartySigninDispatcher('google', '/').catch((error => {
-      console.log(error);
+      // console.log(error);
     }));
   }
 }

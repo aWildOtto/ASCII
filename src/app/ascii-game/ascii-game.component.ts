@@ -18,8 +18,8 @@ export class AsciiGameComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPairs();
-    console.log(this.ascii);
-    console.log(this.word);
+    // console.log(this.ascii);
+    // console.log(this.word);
   }
   public getPairs(): void{
     const pair = this.ds.getPairs();
