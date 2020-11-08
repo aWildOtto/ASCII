@@ -10,9 +10,6 @@ import { OnlineListComponent } from './Components/online-list/online-list.compon
 import { ChatPageComponent } from './Pages/chat-page/chat-page.component';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
-  { path: 'chat-list', component: ChatListComponent },
-  { path: 'game', component: AsciiGameComponent },
   {
     path: 'sign-in', component: LoginPageComponent,
   },
@@ -20,6 +17,10 @@ const routes: Routes = [
     path: '', component: HomePageComponent,
     canActivate: [AsgardGuard]
   },
+  { path: 'chat-list', component: ChatListComponent },
+  { path: 'game', component: AsciiGameComponent },
+
+
   {
     path: 'chat-with/:uid',
     component: ChatPageComponent,
