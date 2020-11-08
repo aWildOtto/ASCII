@@ -5,6 +5,8 @@ The second generations of a very sophisticated chat app. (Mark I is not yet made
 
 This is a messenger-like chat app but it requires user to solve ASCII puzzles in order to chat.
 
+For testing, you can open up chrome's(or any browser's) console. We tell you the answer there.
+
 ## Features:
     - Online/offline status
     - Online user list
