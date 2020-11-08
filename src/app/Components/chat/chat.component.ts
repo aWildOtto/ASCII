@@ -1,4 +1,14 @@
-import { AfterViewChecked, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef, EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { ChatService } from '../../Services/chat/chat.service';
 import { ChatMessage } from '../../models/chat-message';
 import { Subscription } from 'rxjs';
@@ -11,8 +21,10 @@ import { NotificationService } from 'src/app/Services/notification/notification.
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnChanges {
+  @Input() chatChances: number;
   @Input() opponent: User;
+  @Output() countConsumed: EventEmitter<number> = new EventEmitter();
   public currentUser: User;
 
   public username: string = null;
@@ -63,6 +75,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
   }
 
+  ngOnChanges(): void{
+}
+
   ngAfterViewChecked(): void {
     if (this.myScrollContainer) {
       this.scrollToBottom();
@@ -73,7 +88,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.messageSubscrible$ = this.cs
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
-        console.log(messages);
         this.ns.clearNotifications(userId, 'chat', opponentId);
         this.historyMessages = messages;
       });
@@ -82,6 +96,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   public sendMessage(event): void {
     if (event.message.length) {
       this.cs.sendMessage(event.message, this.opponent.uid);
+      this.chatChances --;
+      this.countConsumed.emit(this.chatChances);
     }
   }
 
