@@ -82,7 +82,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public sendMessage(event): void {
     if (event.message.length) {
-      this.cs.sendMessage(event.message, this.opponentId);
+      this.cs.sendMessage(event.message, this.opponent.uid);
     }
   }
 
