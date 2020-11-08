@@ -80,6 +80,9 @@ export class UserService {
 
   }
 
+  public getUser(uid, cb) {
+    this.rdb.database.ref('status').orderByChild('uid').equalTo(uid).on('value', cb);
+  }
   /*
  * third party login
  */

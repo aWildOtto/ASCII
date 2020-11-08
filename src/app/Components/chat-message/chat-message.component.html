@@ -18,10 +18,3 @@
                 src="{{ avatar }}"></ngx-avatar>
   </div>
 </div>
-
-<div *ngIf="type==='update'">
-  <div class="p-5 w-100">
-    {{'CHAT.' + updateType | translate}}
-    <button [routerLink]="[link]" mat-button>Check Order</button>
-  </div>
-</div>
