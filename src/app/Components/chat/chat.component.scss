@@ -70,12 +70,6 @@
 }
 
 
-.order-area {
-  display: flex;
-  width: 30%;
-  border-left: 1px solid #edf1f7;
-}
-
 @media (max-width: 767.98px) {
   .mobile-order-switch {
     height: 50px !important;
@@ -86,10 +80,4 @@
     bottom: 0;
     padding-bottom: max(1rem, env(safe-area-inset-bottom)) !important;
   }
-}
-
-.order-list {
-  border-bottom: 1px solid #edf1f7;
-  height: 100%;
-  overflow-y: auto;
 }

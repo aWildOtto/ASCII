@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   public googleLogIn(): void {
-    this.us.thirdPartySigninDispatcher('google', 'chat-list').catch((error => {
+    this.us.thirdPartySigninDispatcher('google', '/').catch((error => {
       console.log(error);
     }));
   }

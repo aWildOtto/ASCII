@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from '../../Services/chat/chat.service';
 import { ChatMessage } from '../../models/chat-message';
 import { Subscription } from 'rxjs';
@@ -12,10 +12,15 @@ import { NotificationService } from 'src/app/Services/notification/notification.
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
+  @Input() opponent: User;
+  public currentUser: User;
+  public hasChat = true;
+
   public username: string = null;
   public messageSubscrible$: Subscription;
   public userInfoSubscrible$: Subscription;
   public historyMessages: ChatMessage[] = [];
+
   public opponentId: string;
   public chatterInfo = {};
   public Date = Date;
@@ -25,7 +30,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   private userObservable$: Subscription;
 
   constructor(
-    private chat: ChatService,
+    private cs: ChatService,
     private route: ActivatedRoute,
     private us: UserService,
     private ns: NotificationService,
@@ -41,13 +46,13 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
           avatar: auth.photoURL,
           username: auth.displayName,
         };
-        this.route.params.subscribe((params) => {
-          const opponentId = params.userId;
-          this.opponentId = opponentId;
-
-          this.loadingMessages(auth.uid, opponentId);
-
-        });
+        this.currentUser = {
+          uid: auth.uid,
+          avatarUrl: auth.photoURL,
+          username: auth.displayName
+        };
+        this.loadingMessages(auth.uid, this.opponent.uid);
+        this.cs.createChatRoom(this.currentUser, this.opponent);
       } else {
         this.messageSubscrible$?.unsubscribe();
         this.userInfoSubscrible$?.unsubscribe();
@@ -63,18 +68,24 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   public loadingMessages(userId: string, opponentId: string): void {
-    this.messageSubscrible$ = this.chat
+    this.messageSubscrible$ = this.cs
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
+        console.log(messages);
+        if (messages.length === 0) {
+          this.hasChat = false;
+        }
+
         this.historyMessages = messages;
       });
   }
 
   public sendMessage(event): void {
     if (event.message.length) {
-      this.chat.sendMessage(event.message, this.opponentId);
+      this.cs.sendMessage(event.message, this.opponent.uid);
     }
   }
+
 
   ngOnDestroy(): void {
     this.messageSubscrible$?.unsubscribe();
