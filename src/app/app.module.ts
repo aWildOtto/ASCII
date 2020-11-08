@@ -13,7 +13,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AsciiGameComponent } from './ascii-game/ascii-game.component';
+import { AsciiGameComponent } from './Components/ascii-game/ascii-game.component';
 
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { InvalidPageComponent } from './Pages/invalid-page/invalid-page.component';
