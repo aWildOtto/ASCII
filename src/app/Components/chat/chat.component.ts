@@ -26,7 +26,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
   @Input() opponent: User;
   @Output() countConsumed: EventEmitter<number> = new EventEmitter();
   public currentUser: User;
-  public hasChat = true;
 
   public username: string = null;
   public messageSubscrible$: Subscription;
@@ -92,10 +91,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
         console.log(messages);
-        if (messages.length === 0) {
-          this.hasChat = false;
-        }
-
+        this.ns.clearNotifications(userId, 'chat', opponentId);
         this.historyMessages = messages;
       });
   }
