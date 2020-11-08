@@ -16,14 +16,11 @@ export class ChatPageComponent implements OnInit {
     private route: ActivatedRoute,
 
   ) {
-    console.log(this.chatChances);
     this.route.params.subscribe((params) => {
       this.us.getUser(params.uid, (ref) => {
         this.opponent = ref.val()[params.uid];
-        console.log(this.opponent);
       });
     });
-
   }
 
   ngOnInit(): void {

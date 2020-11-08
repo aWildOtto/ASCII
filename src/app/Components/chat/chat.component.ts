@@ -50,7 +50,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
   }
 
   ngOnInit(): void {
-    console.log(this.chatChances);
     this.userObservable$ = this.us.authState.subscribe((auth) => {
       if (auth) {
         this.chatterInfo[auth.uid] = {
@@ -77,7 +76,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
   }
 
   ngOnChanges(): void{
-    console.log(this.chatChances);
 }
 
   ngAfterViewChecked(): void {
@@ -90,7 +88,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
     this.messageSubscrible$ = this.cs
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
-        console.log(messages);
         this.ns.clearNotifications(userId, 'chat', opponentId);
         this.historyMessages = messages;
       });
