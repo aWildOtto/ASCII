@@ -19,8 +19,6 @@ const routes: Routes = [
   },
   { path: 'chat-list', component: ChatListComponent },
   { path: 'game', component: AsciiGameComponent },
-
-
   {
     path: 'chat-with/:uid',
     component: ChatPageComponent,
