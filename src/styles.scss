@@ -14,3 +14,11 @@ button{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.chat-item{
+  border:1px black solid;
+  border-radius: 10px;
+}
+.hand-cursor {
+  cursor: pointer;
+}

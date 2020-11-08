@@ -1,5 +1,4 @@
-<!-- <app-chat-list-item [chat]=""></app-chat-list-item> -->
+<app-online-chat-list-item *ngFor="let user of this.onlineUsers"
+                           [onlineUser]="user">
 
-<button [routerLink]="['chat-with','D2fyT3LmIXZtLIbMnnzZx52Uq732']">
-    Chat
-</button>
+</app-online-chat-list-item>
