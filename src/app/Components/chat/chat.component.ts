@@ -33,7 +33,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
   public userInfoSubscrible$: Subscription;
   public historyMessages: ChatMessage[] = [];
 
-  public opponentId: string;
   public chatterInfo = {};
   public Date = Date;
   public opponentInfo: User = null;
@@ -58,6 +57,10 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked, OnCha
         this.chatterInfo[auth.uid] = {
           avatar: auth.photoURL,
           username: auth.displayName,
+        };
+        this.chatterInfo[this.opponent.uid] = {
+          avatar: this.opponent.avatarUrl,
+          username: this.opponent.username,
         };
         this.currentUser = {
           uid: auth.uid,

@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 import { ChatService } from 'src/app/Services/chat/chat.service';
-import {DicService} from 'src/app/Services/dic/dic.service';
+import { DicService } from 'src/app/Services/dic/dic.service';
 import { ChatListComponent } from 'src/app/Pages/chat-list/chat-list.component';
 import { TopNavComponent } from 'src/app/Components/top-nav/top-nav.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
@@ -31,7 +32,7 @@ import { ChatMessageComponent } from 'src/app/Components/chat-message/chat-messa
 import { ChatFormComponent } from 'src/app/Components/chat-form/chat-form.component';
 import { OnlineChatListItemComponent } from './Components/online-chat-list-item/online-chat-list-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {LoginPageComponent} from './Pages/login-page/login-page.component';
+import { LoginPageComponent } from './Pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {LoginPageComponent} from './Pages/login-page/login-page.component';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    MatButtonModule,
     MatIconModule,
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth

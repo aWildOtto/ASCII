@@ -23,3 +23,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .hand-cursor {
   cursor: pointer;
 }
+
+a:hover {
+  text-decoration: none;
+  color: $second-color !important;
+}

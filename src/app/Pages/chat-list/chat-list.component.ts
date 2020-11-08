@@ -33,10 +33,23 @@ export class ChatListComponent implements OnInit, OnDestroy {
           chatsRef.forEach(async (chatRef) => {
             const chat = chatRef;
             let opponentId = chat.peers[0];
+            let opponentIndex = 0;
             if (chat.peers[0] === auth.uid) {
               opponentId = chat.peers[1];
+              opponentIndex = 1;
             }
             chat.opponentName = chat[opponentId];
+            chat.opponentId = opponentId;
+            if (chat.mostRecent.senderName === chat[auth.uid]) {
+              chat.mostRecent.senderName = 'You';
+            }
+            if (chat.avatarUrls) {
+              chat.showAvatar =
+                chat.avatarUrls[opponentIndex] ||
+                '../../../assets/default-avatar.png';
+            } else {
+              chat.showAvatar = '../../../assets/default-avatar.png';
+            }
             chat.opponentId = opponentId;
             if (chat.mostRecent.senderName === chat[auth.uid]) {
               chat.mostRecent.senderName = 'You';

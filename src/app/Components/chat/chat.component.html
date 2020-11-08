@@ -3,23 +3,23 @@
       <div *ngIf="historyMessages.length > 0; else noMessage">
         <app-chat-message *ngFor="let msg of historyMessages"
           [avatar]="chatterInfo[msg.sender]?.avatar ||'../../../../assets/default-avatar.png'"
-          [date]="msg.timeSent.toDate()" [files]="msg.files" [link]="msg.link" [message]="msg.message"
-          [reply]="msg.receiver === opponentId" [sender]="chatterInfo[msg.sender]?.username || 'Shady individual'"
+          [date]="msg.timeSent.toDate()" [message]="msg.message"
+          [reply]="msg.receiver === opponent.uid" [sender]="chatterInfo[msg.sender]?.username || 'Shady individual'"
           [type]="msg.type" [updateType]="msg.updateType" [userId]="msg.sender">
         </app-chat-message>
       </div>
 
-      <ng-template #noMessage>
-        <div class="flex-grow-1">
-          <p  class="px-5 py-5"
-            style="text-align: center;">
-            No message
-          </p>
-        </div>
-      </ng-template>
+    <ng-template #noMessage>
+      <div class="flex-grow-1">
+        <p class="px-5 py-5"
+           style="text-align: center;">
+          No message
+        </p>
+      </div>
+    </ng-template>
 
-    </div>
-
-    <app-chat-form [chances] = "this.chatChances" (send)="sendMessage($event)" class='chat-form'></app-chat-form>
+  </div>
 
 </div>
+<app-chat-form [chances] = "this.chatChances" (send)="sendMessage($event)" class='chat-form'></app-chat-form>
+
