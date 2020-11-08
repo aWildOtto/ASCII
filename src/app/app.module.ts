@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { ChatService } from 'src/app/Services/chat/chat.service';
+import {DicService} from 'src/app/Services/dic/dic.service';
 import { ChatListComponent } from 'src/app/Pages/chat-list/chat-list.component';
 import { TopNavComponent } from 'src/app/Components/top-nav/top-nav.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
@@ -11,7 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { LoginPageComponent } from './Pages/login-page/login-page.component';
+import { AsciiGameComponent } from './ascii-game/ascii-game.component';
 
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { InvalidPageComponent } from './Pages/invalid-page/invalid-page.component';
@@ -30,6 +31,7 @@ import { ChatMessageComponent } from 'src/app/Components/chat-message/chat-messa
 import { ChatFormComponent } from 'src/app/Components/chat-form/chat-form.component';
 import { OnlineChatListItemComponent } from './Components/online-chat-list-item/online-chat-list-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {LoginPageComponent} from './Pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TopNavComponent,
     NavBarComponent,
     LoginPageComponent,
+    AsciiGameComponent,
     HomePageComponent,
     InvalidPageComponent,
     OnlineListComponent,
@@ -62,10 +65,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
+    AngularFireStorageModule,
+    FormsModule,
+    // storage
     AngularFireStorageModule, BrowserAnimationsModule // storage
   ],
   providers: [
-    ChatService
+    ChatService,
+    DicService
   ],
   bootstrap: [AppComponent]
 })

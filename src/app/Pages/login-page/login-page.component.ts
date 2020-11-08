@@ -8,8 +8,8 @@ import {UserService} from 'src/app/Services/user/user.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private us: UserService) {
-  }
+  constructor(private us: UserService) { }
+
 
   ngOnInit(): void {
   }

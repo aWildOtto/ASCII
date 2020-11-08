@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AsciiGameComponent} from './ascii-game/ascii-game.component';
 import { ChatListComponent } from 'src/app/Pages/chat-list/chat-list.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { AsgardGuard } from './Guards/asgard/asgard.guard';
@@ -16,6 +17,10 @@ const routes: Routes = [
     path: '', component: HomePageComponent,
     canActivate: [AsgardGuard]
   },
+  { path: 'chat-list', component: ChatListComponent },
+  { path: 'game', component: AsciiGameComponent },
+
+
   {
     path: 'chat-with/:uid',
     component: ChatPageComponent,
