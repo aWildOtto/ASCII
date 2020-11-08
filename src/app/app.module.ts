@@ -12,7 +12,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AsciiGameComponent } from './ascii-game/ascii-game.component';
 
 import { HomePageComponent } from './Pages/home-page/home-page.component';
@@ -32,6 +31,7 @@ import { ChatMessageComponent } from 'src/app/Components/chat-message/chat-messa
 import { ChatFormComponent } from 'src/app/Components/chat-form/chat-form.component';
 import { OnlineChatListItemComponent } from './Components/online-chat-list-item/online-chat-list-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
