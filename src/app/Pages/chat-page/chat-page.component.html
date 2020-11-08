@@ -5,9 +5,11 @@
     <div class="w-50">
         <app-chat [chatChances] = "this.chatChances" (countConsumed)="this.consumeChances($event)" *ngIf="opponent" [opponent]="this.opponent"></app-chat>
     </div>
+
     <div class="w-25">
         <app-ascii-game (countChanged)="this.setChances($event)" [chatChances]="chatChances" ></app-ascii-game>
     </div>
-  <div> You have {{this.chatChances}} times to send messages!</div>
+  <div class="w-25">
+  </div>
 </div>
 

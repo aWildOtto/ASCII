@@ -22,7 +22,7 @@ export class ChatMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.reply)
+    console.log(this.reply);
 
   }
 
