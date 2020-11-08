@@ -67,6 +67,7 @@ export class UserService {
         this.userStatusRdbRef.onDisconnect().set({
           username: signInUser.displayName,
           avatarUrl: signInUser.photoURL,
+          uid: signInUser.uid,
           ...this.isOfflineForDatabase
         });
 
