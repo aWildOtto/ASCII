@@ -19,10 +19,8 @@ export class DicService {
     const word = this.selectRandomWord();
     let ascii = '';
     for (let i = 0; i < word.length; i++) {
-      // console.log(word.charCodeAt(i).toString());
       ascii = ascii + word.charCodeAt(i).toString();
     }
-    console.log('The ascii is: ' + ascii);
     return {word,  ascii};
   }
 }

@@ -20,6 +20,6 @@
 
   </div>
 
-
 </div>
-<app-chat-form (send)="sendMessage($event)" class='chat-form'></app-chat-form>
+<app-chat-form [chances] = "this.chatChances" (send)="sendMessage($event)" class='chat-form'></app-chat-form>
+

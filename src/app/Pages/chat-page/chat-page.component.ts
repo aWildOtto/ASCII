@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User, UserService } from 'src/app/Services/user/user.service';
 
@@ -8,6 +8,7 @@ import { User, UserService } from 'src/app/Services/user/user.service';
   styleUrls: ['./chat-page.component.scss']
 })
 export class ChatPageComponent implements OnInit {
+  public chatChances = 0;
 
   opponent: User;
   constructor(
@@ -15,17 +16,21 @@ export class ChatPageComponent implements OnInit {
     private route: ActivatedRoute,
 
   ) {
-
     this.route.params.subscribe((params) => {
       this.us.getUser(params.uid, (ref) => {
         this.opponent = ref.val()[params.uid];
-        console.log(this.opponent);
       });
     });
-
   }
 
   ngOnInit(): void {
   }
 
+  public setChances(count: number): void {
+    this.chatChances = count;
+  }
+
+  public consumeChances(count: number): void {
+    this.chatChances --;
+  }
 }

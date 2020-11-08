@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DicService} from '../Services/dic/dic.service';
 
 @Component({
@@ -10,16 +10,15 @@ export class AsciiGameComponent implements OnInit {
   public ascii: string;
   public word: string;
   public input: string;
-  public chatChances = 0;
+  @Input() chatChances = 0;
   public toast = '';
   public isCorrect = -1;
+  @Output() countChanged: EventEmitter<number> = new EventEmitter();
   constructor(private ds: DicService) {
   }
 
   ngOnInit(): void {
     this.getPairs();
-    // console.log(this.ascii);
-    // console.log(this.word);
   }
   public getPairs(): void{
     const pair = this.ds.getPairs();
@@ -31,6 +30,7 @@ export class AsciiGameComponent implements OnInit {
     if (this.input === this.word){
       this.isCorrect = 1;
       this.chatChances++;
+      this.countChanged.emit(this.chatChances);
       this.getPairs();
       this.input = '';
       return true;
@@ -38,6 +38,7 @@ export class AsciiGameComponent implements OnInit {
     else{
       this.isCorrect = 0;
       this.chatChances = 0;
+      this.countChanged.emit(this.chatChances);
       return false;
 
     }

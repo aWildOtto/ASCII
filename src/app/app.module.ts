@@ -33,6 +33,7 @@ import { ChatFormComponent } from 'src/app/Components/chat-form/chat-form.compon
 import { OnlineChatListItemComponent } from './Components/online-chat-list-item/online-chat-list-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
+import { MatDivider } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import { LoginPageComponent } from './Pages/login-page/login-page.component';
     DatePipe,
     ChatComponent,
     ChatPageComponent,
-    ChatMessageComponent,
     ChatFormComponent,
     ChatMessageComponent
   ],
