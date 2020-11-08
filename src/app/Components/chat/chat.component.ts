@@ -71,7 +71,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   public loadingMessages(userId: string, opponentId: string): void {
-    this.opponentId = opponentId;
     this.messageSubscrible$ = this.cs
       .loadingMessages(userId, opponentId)
       .subscribe((messages) => {
