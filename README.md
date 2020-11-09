@@ -1,11 +1,11 @@
 # ASCII (A Sophisticated Chat mark II)
 This is a Hackathon project for SFU's Fallhacks 2020.
 
-The second generations of a very sophisticated chat app. (Mark I is not yet made)
+The second generations of a very sophisticated chat app. (since we're a forward looking team and we know the first gen products always suck, we decided to jump straight to Mark II)
 
-This is a messenger-like chat app but it requires user to solve ASCII puzzles in order to chat.
+This is a facebook messenger-like chat app but it requires user to solve ASCII puzzles in order to chat.
 
-For testing, you can open up chrome's(or any browser's) console. We tell you the answer there.
+For testing, you can open up chrome's(or any browser's) console. We tell you the answer to the ASCII puzzles there.
 
 ## Features:
     - Online/offline status
